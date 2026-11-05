@@ -160,13 +160,13 @@ void DoLegitAimbot(CUserCmd* cmd)
 			if (smoothSteps >= Settings::Aimbot::smoothSteps)
 				shouldFire = true;
 			else {
-				shouldFire = false;
-
-				auto delta = calc - cmd->viewangles;
-				auto smoothed = cmd->viewangles + (delta * (1.f / Settings::Aimbot::smoothSteps));
-
-				calc = smoothed;
+				shouldFire = false;	
 			}
+
+			auto delta = calc - cmd->viewangles;
+			auto smoothed = cmd->viewangles + (delta * (1.f / Settings::Aimbot::smoothSteps));
+
+			calc = smoothed;
 		}
 
 		// it is better to use smoothing without silent aim.
