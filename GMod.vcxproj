@@ -248,6 +248,7 @@
     <ClInclude Include="lua_shared\CLuaShared.h" />
     <ClInclude Include="mathlib\mathlib.h" />
     <ClInclude Include="mathlib\math_pfns.h" />
+    <ClInclude Include="Memory.h" />
     <ClInclude Include="NetVars.h" />
     <ClInclude Include="tier0/Color.h" />
     <ClInclude Include="CPhysicsSurfaceProps.h" />
