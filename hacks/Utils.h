@@ -40,6 +40,19 @@ std::string GetLuaEntBase(C_BaseCombatWeapon* _this)
 	return out;
 }
 
+const char* GetLuaEntBase2(C_BaseCombatWeapon* _this)
+{
+	if (!Lua || !_this->UsesLua())
+		return "";
+	_this->PushEntity();
+	Lua->GetField(-1, "Base");
+	const char* out = "";
+	if (Lua->IsType(-1, LuaObjectType::STRING))
+		out = Lua->GetString(-1, NULL); // копируем ДО Pop
+	Lua->Pop(2);
+	return out;
+}
+
 double GetLuaWeaponDamage(C_BaseCombatWeapon* _this)
 {
 	if (!Lua || !_this->UsesLua())
@@ -73,6 +86,19 @@ std::string GetLuaEntName(C_BaseCombatWeapon* _this)
 	std::string out = "";
 	if (Lua->IsType(-1, LuaObjectType::STRING))
 		out = Lua->GetString(-1, NULL); // копируем ДО Pop
+	Lua->Pop(2);
+	return out;
+}
+
+const char* GetLuaEntName2(C_BaseCombatWeapon* _this)
+{
+	if (!Lua || !_this->UsesLua())
+		return "";
+	_this->PushEntity();
+	Lua->GetField(-1, "PrintName");
+	const char* out = "";
+	if (Lua->IsType(-1, LuaObjectType::STRING))
+		out = Lua->GetString(-1, NULL);
 	Lua->Pop(2);
 	return out;
 }
