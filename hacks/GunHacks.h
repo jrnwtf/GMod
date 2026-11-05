@@ -25,7 +25,7 @@ void NoSpread(CUserCmd* cmd, C_BaseCombatWeapon* gun, CLuaInterface* Lua)
 		gun->PushEntity();
 
 		// WTF IS THIS IF ELSE SHIT LMAO? instead do a runtime/compiletime string hashing switch case
-		if (!strcmp(GetLuaEntBase(gun), "tfa_gun_base"))
+		if (!strcmp(GetLuaEntBase2(gun), "tfa_gun_base"))
 		{
 			--topop;
 			Lua->GetField(-1, "CalculateConeRecoil");
@@ -35,7 +35,7 @@ void NoSpread(CUserCmd* cmd, C_BaseCombatWeapon* gun, CLuaInterface* Lua)
 			spread = Lua->GetNumber(-1);
 		}
 		// god that's annoying, i got it to work a few minutes ago, did some code cleaning, and suddenly it stopped working... even the backups...
-		else if (!strcmp(GetLuaEntBase(gun), "fas2_base"))
+		else if (!strcmp(GetLuaEntBase2(gun), "fas2_base"))
 		{
 			Lua->GetField(-1, "MaxSpreadInc");
 			double curCone = 0.09f + Lua->GetNumber(-1);
@@ -73,7 +73,7 @@ void NoSpread(CUserCmd* cmd, C_BaseCombatWeapon* gun, CLuaInterface* Lua)
 			*/
 
 		}
-		else if (!strcmp(GetLuaEntBase(gun), "cw_base"))
+		else if (!strcmp(GetLuaEntBase2(gun), "cw_base"))
 		{
 			Lua->GetField(-1, "MaxSpreadInc");
 			double curCone = 0.09f + Lua->GetNumber(-1);
@@ -176,7 +176,7 @@ void GunHacks(CUserCmd* cmd, C_BaseCombatWeapon* _this) {
 	* If it is another base, just apply every other base's fields to it too.
 	* Universal norecoil :-)
 	*/
-	if (!strcmp(GetLuaEntBase(_this), "bobs_gun_base")) // if the gun's base == m9k
+	if (!strcmp(GetLuaEntBase2(_this), "bobs_gun_base")) // if the gun's base == m9k
 	{
 		Lua->GetField(-1, "Primary");
 		if (Lua->IsType(-1, LuaObjectType::TABLE)) // if SWEP.Primary is a table
@@ -197,7 +197,7 @@ void GunHacks(CUserCmd* cmd, C_BaseCombatWeapon* _this) {
 		}
 		else Lua->Pop(2);
 	}	
-	else if (!strcmp(GetLuaEntBase(_this), "cw_base")) // if the gun's base == cw2
+	else if (!strcmp(GetLuaEntBase2(_this), "cw_base")) // if the gun's base == cw2
 	{
 		if (Settings::Misc::noRecoil)
 		{
@@ -209,7 +209,7 @@ void GunHacks(CUserCmd* cmd, C_BaseCombatWeapon* _this) {
 		Lua->Pop(1);
 		return;
 	}
-	else if (!strcmp(GetLuaEntBase(_this), "fas2_base")) // if the gun's base == fas2
+	else if (!strcmp(GetLuaEntBase2(_this), "fas2_base")) // if the gun's base == fas2
 	{
 		if (Settings::Misc::noRecoil)
 		{
@@ -221,7 +221,7 @@ void GunHacks(CUserCmd* cmd, C_BaseCombatWeapon* _this) {
 		Lua->Pop(1);
 		return;
 	}
-	else if (!strcmp(GetLuaEntBase(_this), "tfa_gun_base"))
+	else if (!strcmp(GetLuaEntBase2(_this), "tfa_gun_base"))
 	{
 		if (Settings::Misc::noRecoil)
 		{
