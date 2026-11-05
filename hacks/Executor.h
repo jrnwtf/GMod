@@ -4,7 +4,8 @@
 #include "../hooks/RunStringEx.h"
 #include <commdlg.h>
 #include <mutex>
-/*std::mutex executorMutex;
+
+std::mutex executorMutex;
 
 void ExecuteScript(const char* input)
 {
@@ -12,6 +13,7 @@ void ExecuteScript(const char* input)
     std::unique_lock lock(executorMutex);
     Globals::waitingToBeExecuted.store(std::make_pair(true, input));
 }
+
 void LoadScriptFromFile()
 {
     OPENFILENAMEA openFileName = { 0 };
@@ -36,4 +38,3 @@ void LoadScriptFromFile()
         strcpy(Settings::ScriptInput, fileContent.c_str());
     }
 }
-*/
